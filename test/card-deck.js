@@ -5,10 +5,10 @@ describe("Card deck", function() {
   describe("#createDeck", function() {
     let deck = cardDeck.createDeck();
     it("should have a deck with a length of 54", function() {
-      return assert.equal(deck.length, 54);
+       assert.equal(deck.length, 54);
     });
   });
-  
+
   describe("#isSameSuit", function() {
     describe("Has same suit", function() {
       let isSameSuit = cardDeck.isSameSuit({ suit: "CLUB" }, { suit: "CLUB" });
@@ -29,7 +29,7 @@ describe("Card deck", function() {
       });
     });
   });
-  
+
   describe("#isOffSuit", function(suit, card) {
     describe("Is an offsuit", function() {
       let isOffSuit = cardDeck.isOffSuit({ suit: "CLUB" }, { suit: "SPADE" });
@@ -50,5 +50,5 @@ describe("Card deck", function() {
       });
     });
   });
-  
+
 });
