@@ -1,23 +1,23 @@
-var _ = require('lodash'),
-    path = require('path'),
-    express = require('express'),
-    handlebars = require('express-handlebars'),
-    edoHandlebarsHelpers = require('edo-handlebars-helpers'),
-    session = require('express-session'),
-    sessionStore = require('./session-store'),
-    favicon = require('serve-favicon'),
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
-    morgan = require('morgan'),
-    logger = require('./logger'),
-    config = require('getconfig'),
-    controllers = require('../controllers');
+import _ from 'lodash';
+import path from 'path';
+import express from 'express';
+import handlebars from 'express-handlebars';
+import edoHandlebarsHelpers from 'edo-handlebars-helpers';
+import session from 'express-session';
+import sessionStore from './session-store';
+import favicon from 'serve-favicon';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import logger from './logger';
+import config from 'getconfig';
+import controllers from '../controllers';
 
 //This module basically just offloads all the app configuration so it
 //doesn't need to be included in the app root.
 
-module.exports = function(app) {
-  var hbs = handlebars.create({
+export default function appConfig (app) {
+  let hbs = handlebars.create({
     extname: 'hbs',
     defaultLayout: 'layout.hbs',
     layoutsDir: path.join(__dirname, '../views/layouts'),
