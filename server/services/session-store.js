@@ -9,4 +9,4 @@ let store = new RedisStore({
   pass: config.session.pass || process.env.REDISPASS,
 });
 
-exports default store;
+export default store;

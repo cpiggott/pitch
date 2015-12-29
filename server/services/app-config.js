@@ -9,7 +9,7 @@ import favicon from 'serve-favicon';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
-import logger from './logger';
+import * as logger from './logger';
 import config from 'getconfig';
 import controllers from '../controllers';
 

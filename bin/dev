@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+require('babel-register');
+var clientBuild = require('../scripts/browserify');
+var exec = require('child_process').exec;
+
+var child = exec('./node_modules/.bin/nodemon ./bin/www --watch ./server ');
+
+child.stdout.pipe(process.stdout);
+child.stderr.pipe(process.stderr);
+
+clientBuild.run({
+  writeLocation: "./server/public/javascripts/app.js",
+  watch: true
+});
+
+
+
+

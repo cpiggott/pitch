@@ -1,6 +1,6 @@
 import config from 'getconfig';
 
-exports error function error (err, cb) {
+export function error (err, cb) {
   console.log("ERRR", err)
   if (!cb) cb = function() {}
   if (!err) return cb("No error to log");
