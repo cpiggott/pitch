@@ -1,9 +1,10 @@
 import _ from 'lodash';
 
 
-const SUITS = ["CLUB", "SPADE", "HEART", "DIAMOND"];
-const VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE" ];
-const POINT_VALUES = [2,3,4,5,6,7,8,9,10,14,15,16,17]; //Jack of the suit will start at 14, Off-Jack will be assigned 13.
+const SUITS =   ["CLUB", "SPADE", "HEART", "DIAMOND"];
+const VALUES =  ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE" ];
+const WEIGHTS = [2,3,4,5,6,7,8,9,10,14,15,16,17]; //Jack of the suit will start at 14, Off-Jack will be assigned 13.
+const POINTS =  [1,3,0,0,0,0,0,0,1,1,0,0,1];
 
 export function createDeck(){
     let allCards = [];
@@ -39,7 +40,7 @@ export function isOffSuit(card1, card2){
             return false;
         }
     } else if (card1.suit == "HEART"){
-        if(card2.suit == "DIAMON"){
+        if(card2.suit == "DIAMOND"){
             return true;
         } else {
             return false;
@@ -55,11 +56,32 @@ export function isOffSuit(card1, card2){
     }
 }
 
+//Checks to see if this card can be played
+export function isTrump(suit, card){
+    if(suit == card.suit){
+        return true;
+    } else if(card.suit == "JOKER"){
+        return true;
+    } else if (isOffSuit({suit: suit}, card) && card.value == "JACK"){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+export function updatePointValue(suit, card){
+    if(isOffSuit({suit: suit}, card) && card.value == "JACK"){
+        card.weight = 13;
+    }
+    return card;
+}
+
 function createCard(cardSuit, cardValue, index, joker = false){
     return {
         suit: cardSuit,
         value: cardValue,
-        points: POINT_VALUES[index],
+        weight: WEIGHTS[index],
+        points: POINTS[index],
         isJoker: joker
     };
 }
