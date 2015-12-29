@@ -1,5 +1,5 @@
 import appController from './app';
 
-module.exports = function(app) {
+exports default function setupControllers(app) {
   appController(app);
 }
