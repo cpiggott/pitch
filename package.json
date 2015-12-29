@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cpiggott/pitch",
   "dependencies": {
+    "babel-cli": "^6.3.17",
     "body-parser": "^1.14.0",
     "bower": "^1.6.3",
     "connect-redis": "^2.5.1",
