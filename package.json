@@ -1,0 +1,19 @@
+{
+  "name": "pitch",
+  "version": "0.0.1",
+  "description": "Pitch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cpiggott/pitch.git"
+  },
+  "author": "Chris Piggot and Eric Dorsey and more??",
+  "license": "Not sure...",
+  "bugs": {
+    "url": "https://github.com/cpiggott/pitch/issues"
+  },
+  "homepage": "https://github.com/cpiggott/pitch"
+}
