@@ -21,11 +21,45 @@ export function shuffleDeck(sortedDeck){
     return _.shuffle(sortedDeck);
 }
 
-function createCard(suit, value, index, joker = false){
+export function isSameSuit(card1, card2){
+    return card1.suit == card2.suit ? true : false;
+}
+
+export function isOffSuit(card1, card2){
+    if(card1.suit == "CLUB"){
+        if(card2.suit == "SPADE"){
+            return true;
+        } else {
+            return false;
+        }
+    } else if(card1.suit == "SPADE"){
+        if(card2.suit == "CLUB"){
+            return true;
+        } else {
+            return false;
+        }
+    } else if (card1.suit == "HEART"){
+        if(card2.suit == "DIAMON"){
+            return true;
+        } else {
+            return false;
+        }
+    } else if (card1.suit == "DIAMOND"){
+        if(card2.suit == "HEART"){
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+function createCard(cardSuit, cardValue, index, joker = false){
     return {
-        cardSuit: suit,
-        cardValue: value,
-        pointValue: POINT_VALUES[index],
+        suit: cardSuit,
+        value: cardValue,
+        points: POINT_VALUES[index],
         isJoker: joker
     };
 }

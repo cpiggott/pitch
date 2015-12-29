@@ -18,13 +18,13 @@ describe("Card deck", function() {
     });
     describe("Has different suit", function() {
       let isSameSuit = cardDeck.isSameSuit({ suit: "CLUB" }, { suit: "SPADE" });
-      it("should have same suit", function() {
+      it("should not have same suit", function() {
         return assert(!isSameSuit);
       });
     });
     describe("Has different suit (joker)", function() {
       let isSameSuit = cardDeck.isSameSuit({ suit: "CLUB" }, { suit: "JOKER" });
-      it("should have same suit", function() {
+      it("should not have same suit", function() {
         return assert(!isSameSuit);
       });
     });
