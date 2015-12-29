@@ -50,10 +50,6 @@ describe("Card deck", function() {
       });
     });
   });
-<<<<<<< 01ffcf9b92e64b9f08345e6fd0d4b538dec4494f
-
-});
-=======
   
   describe("#winningCardSort", function() {
     describe("easy test", function() {
@@ -186,4 +182,3 @@ describe("Card deck", function() {
     });
   })
 });
->>>>>>> more tests
