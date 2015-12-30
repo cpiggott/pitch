@@ -1,10 +1,11 @@
 import config from 'getconfig';
 import debugTool from 'debug';
 import express from 'express';
-import logger from './services/logger';
+import * as logger from './services/logger';
 import makeStore from './services/store';
 import startSocketio from './services/socket-io';
 import appConfig from './services/app-config';
+import http from 'http';
 
 const debug = debugTool('pitch:server');
 
@@ -16,16 +17,23 @@ process.on('uncaughtException', function(err) {
 });
 
 module.exports = function startServer(cb) {
-  let app = appConfig(express());
-  let httpServer = require('http').Server(app);
   let store = makeStore();
+  let app = express();
   
-  startSocketio({ server: httpServer, store });
+  let httpServer = http.createServer();
+  app = appConfig(app);
   
   app.set('port', config.port);
   
-  let server = app.listen(app.get('port'), function() {
-    debug('Express server listening on port ' + server.address().port);
+  httpServer.on('request', app);
+  
+  startSocketio({ 
+    server: httpServer, 
+    store, 
+  });
+  
+  httpServer.listen(app.get('port'), function() {
+    debug('Express server listening on port ' + app.get('port'));
     cb();
   });
 }
