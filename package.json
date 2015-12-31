@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "babel-node ./bin/www",
-    "test": "mocha --compilers js:babel-register"
+    "test": "mocha --compilers js:babel-register",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",

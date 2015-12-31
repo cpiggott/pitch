@@ -4,7 +4,7 @@ export function deal(game) {
   if (!game.deck) throw new Error("No game deck");
   if (!game.players) throw new Error("No players");
   
-  _.each([1, 2, 3, 4], function(cardNo) {
+  _.each(new Array(9), function() {
     eachPlayerStartingAfterDealer(game, function(player) {
       if (!player.hand) player.hand = [];
       player.hand.push(game.deck.shift());
@@ -41,5 +41,11 @@ export function changeDealer(game) {
   else {
     game.currentDealer = game.currentDealer + 1;
   }
+  
+  _.each(game.players, function(player) {
+    player.dealer = false;
+  });
+  game.players[game.currentDealer].dealer = true;
+  
   return game;
 }

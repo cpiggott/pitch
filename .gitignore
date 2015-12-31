@@ -32,3 +32,4 @@ npm-debug.log
 # app.js
 
 server/public/javascripts/app.js
+server/public/bower_components/

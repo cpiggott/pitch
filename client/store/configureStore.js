@@ -1,15 +1,16 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLoggerMiddleware from 'redux-logger';
-import rootReducer from '../../server/reducer';
+import rootReducer from '../reducer';
 import remoteActionMiddleware from '../middleware/remote-action'
+import { getThisUser } from '../user';
 
-const createStoreWithMiddleware = applyMiddleware(
-  remoteActionMiddleware(window.socket),
-  thunkMiddleware,
-  createLoggerMiddleware()
-)(createStore);
-
-export default function configureStore() {
+export default function configureStore(socket) {
+  const createStoreWithMiddleware = applyMiddleware(
+    remoteActionMiddleware(socket, getThisUser),
+    thunkMiddleware,
+    createLoggerMiddleware()
+  )(createStore);
+  
   return createStoreWithMiddleware(rootReducer);
 }

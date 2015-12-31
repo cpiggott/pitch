@@ -9,7 +9,7 @@ import App from './containers/App';
 const socket = io(`${location.protocol}//${location.hostname}:3011`);
 window.socket = socket;
 
-const store = configureStore();
+const store = configureStore(socket);
 window.reduxStore = store;
 
 socket.on('state', state =>

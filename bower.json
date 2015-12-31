@@ -1,0 +1,23 @@
+{
+  "name": "pitch",
+  "description": "Pitch",
+  "main": "index.js",
+  "authors": [
+    "Chris Piggot and Eric Dorsey and more??"
+  ],
+  "license": "Not sure...",
+  "homepage": "https://github.com/cpiggott/pitch",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "server/public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}

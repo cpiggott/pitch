@@ -1,12 +1,14 @@
 import uniqId from 'uniq-id';
-import { createDeck } from './card-deck'
+import { createDeck, shuffleDeck } from './card-deck'
 import { createPlayer } from './game-player';
 
 export function createGame() {
-  let games = {}
-  games[uniqId()] = {
-    deck: createDeck(),
-    players: [1, 2, 3, 4].map(() => createPlayer())
+  let gameId = uniqId();
+  
+  return {
+    id: gameId,
+    deck: shuffleDeck(createDeck()),
+    players: [1, 2, 3, 4].map(() => createPlayer()),
+    rounds: []
   };
-  return games;
 }
