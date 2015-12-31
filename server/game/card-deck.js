@@ -1,9 +1,8 @@
 import _ from 'lodash';
 
-
 const SUITS = ["CLUB", "SPADE", "HEART", "DIAMOND"];
-const VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE" ];
-const POINT_VALUES = [2,3,4,5,6,7,8,9,10,14,15,16,17]; //Jack of the suit will start at 14, Off-Jack will be assigned 13.
+const VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE"];
+const POINT_VALUES = [2, 3, 4, 5, 6, 7, 8, 9, 10, 14, 15, 16, 17]; //Jack of the suit will start at 14, Off-Jack will be assigned 13.
 
 export function createDeck(){
     let allCards = [];
