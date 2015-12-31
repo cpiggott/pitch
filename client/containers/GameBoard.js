@@ -14,14 +14,16 @@ class GameBoard extends Component {
     
     return (
       <div className="gameboard">
-        <div class="row">
-          <div class="col-md-3">
-            {
-              _.map(this.props.players, function(player) {
-                return (<Player player={player} key={player.id} />);
-              })
-            }
-          </div>
+        <div className="row">
+          {
+            _.map(this.props.players, function(player) {
+              return (
+                <div className="col-md-6">
+                  <Player player={player} key={player.id} />
+                </div>
+              );
+            })
+          }
         </div>
       </div>
     );

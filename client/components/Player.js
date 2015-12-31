@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React, { Component, PropTypes } from 'react';
 import Card from './Card';
+import BettingArea from './BettingArea';
 
 class Player extends Component {
   constructor(props) {
@@ -18,12 +19,21 @@ class Player extends Component {
             <div>Player #{this.props.player.id}</div>
           </div>
           <div className="panel-body">
-            <div className="hand">
-              {
-                _.map(this.props.player.hand, function(card) {
-                  return (<Card card={card} key={card.id} />);
-                })
-              }
+            <div className="row">
+              <div className="col-md-12">
+                <div className="hand">
+                  {
+                    _.map(this.props.player.hand, function(card) {
+                      return (<Card card={card} key={card.id} />);
+                    })
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="panel-footer">
+            <div className="betting-status pull-right">
+              <BettingArea player={this.props.player} />
             </div>
           </div>
         </div>
