@@ -13,6 +13,7 @@ export default store => next => action => {
     
     let gameId = _.difference(currentGames, previousGames)[0];
     store.dispatch({ type: "CHANGE_DEALER", gameId });
+    store.dispatch({ type: "DEAL_ROUND", gameId});
   }
   
   return returnedValue;
