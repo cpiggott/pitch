@@ -8,8 +8,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("RENDER APP");
-    // Injected by React Router
     return (
       <div>
         <div className="app-bar">
@@ -34,10 +32,7 @@ App.contextTypes = {
 };
 
 function mapStateToProps(state) {
-  console.log("MAP STATE TO PROPS", state);
   return state;
-  let props = {};
-  return props;
 }
 
 export default connect(

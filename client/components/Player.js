@@ -9,8 +9,6 @@ class Player extends Component {
   }
 
   render() {
-    console.log("RENDER Player", this.props);
-    // Injected by React Router
     return (
       <div className="player">
         <div className="panel panel-default">

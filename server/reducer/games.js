@@ -26,36 +26,34 @@ export default function gameReducer(games = {}, action) {
     games[gameId] = game;
   }
   else if (action.type === "CHANGE_DEALER") {
-    games[gameId] = dealer.changeDealer(game);
+    game = dealer.changeDealer(game);
   }
   else if (action.type === "DEAL_ROUND") {
-    games[gameId] = dealer.deal(game);
+    game = dealer.deal(game);
   }
   else if (action.type === "BEGIN_BETTING") {
-    games[gameId] = game.isBetting = true;
+    game.isBetting = true;
   }
   else if (action.type === "END_BETTING") {
-    games[gameId] = game.isBetting = false;
+    game.isBetting = false;
   }
   else if (action.type === "PLAYER_BET_OPEN") {
     _.each(game.players, function(player) {
       player.isBetting = false;
       if (player.id === action.playerId) player.isBetting = true
     });
-    games[gameId] = game;
   }
   else if (action.type === "PLAYER_BET_CLOSED") {
     _.each(game.players, function(player) {
       player.isBetting = false;
     });
-    games[gameId] = game;
   }
   else if (action.type === "PLAYER_BET") {
     player = _.find(game.players, (player) =>
       player.id === action.playerId
     );
     player.bet = action.bet;
-    games[gameId] = game;
   }
+  games[gameId] = game;
   return games;
 }

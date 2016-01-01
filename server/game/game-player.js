@@ -7,13 +7,6 @@ export function createPlayer() {
   };
 }
 
-export function nextPlayer(startingPosition, totalPositions) {
-  let callCount = 0;
-  
-  return function next() {
-    callCount = callCount + 1;
-    if (callCount >= totalPositions) callCount = 0;
-    return startingPosition + callCount;
-  }
-  
+export function nextPlayer(dealerPosition = 0, turn = 0) {
+  return ((dealerPosition + 1 + turn) % 4);
 }

@@ -9,9 +9,6 @@ class GameBoard extends Component {
   }
 
   render() {
-    // Injected by React Router
-    console.log("RENDER", this.props);
-    
     return (
       <div className="gameboard">
         <div className="row">

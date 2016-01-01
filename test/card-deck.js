@@ -1,4 +1,4 @@
-import * as cardDeck from '../server/services/card-deck';
+import * as cardDeck from '../server/game/card-deck';
 import assert from 'assert';
 
 describe("Card deck", function() {
@@ -51,49 +51,10 @@ describe("Card deck", function() {
     });
   });
   
-  describe("#winningCardSort", function() {
-    describe("easy test", function() {
-      let card1 = { suit: "SPADE", value: "2", points: 2 };
-      let card2 = { suit: "SPADE", value: "3", points: 3 };
-      let sortDirection = winningCardSort(card1, card2);
-      
-      it("should return the correct sort direction", function() {
-        assert(sortDirection === 1);
-      })
-    });
-    describe("ace high", function() {
-      let card1 = { suit: "SPADE", value: "ACE", points: 17 };
-      let card2 = { suit: "SPADE", value: "3", points: 3 };
-      let sortDirection = winningCardSort(card1, card2);
-      
-      it("should return the correct sort direction", function() {
-        assert(sortDirection === -1);
-      })
-    });
-    describe("off jack", function() {
-      let card1 = { suit: "CLUB", value: "JACK", points: 17 };
-      let card2 = { suit: "SPADE", value: "3", points: 3 };
-      let sortDirection = winningCardSort(card1, card2);
-      
-      it("should return the correct sort direction", function() {
-        assert(sortDirection === -1);
-      })
-    });
-    describe("on jack", function() {
-      let card1 = { suit: "SPADE", value: "JACK", points: 17 };
-      let card2 = { suit: "SPADE", value: "3", points: 3 };
-      let sortDirection = winningCardSort(card1, card2);
-      
-      it("should return the correct sort direction", function() {
-        assert(sortDirection === -1);
-      })
-    });
-  });
-  
   describe("#isTrump", function() {
     describe("a four of trump", function() {
       let card = { suit: "HEART", value: "4", points: 4 };
-      trumpSuit = "HEART";
+      let trumpSuit = "HEART";
       let isTrump = cardDeck.isTrump(trumpSuit, card);
       
       it("should be trump", function() {
@@ -103,7 +64,7 @@ describe("Card deck", function() {
     
     describe("a four of not trump", function() {
       let card = { suit: "HEART", value: "4", points: 4 };
-      trumpSuit = "DIAMOND";
+      let trumpSuit = "DIAMOND";
       let isTrump = cardDeck.isTrump(trumpSuit, card);
       
       it("should not be trump", function() {
@@ -113,7 +74,7 @@ describe("Card deck", function() {
     
     describe("a jack off suit", function() {
       let card = { suit: "HEART", value: "JACK", points: 14 };
-      trumpSuit = "DIAMOND";
+      let trumpSuit = "DIAMOND";
       let isTrump = cardDeck.isTrump(trumpSuit, card);
       
       it("should be trump", function() {
@@ -123,7 +84,7 @@ describe("Card deck", function() {
     
     describe("a low joker", function() {
       let card = { suit: "JOKER", value: "LOW", points: 11 };
-      trumpSuit = "DIAMOND";
+      let trumpSuit = "DIAMOND";
       let isTrump = cardDeck.isTrump(trumpSuit, card);
       
       it("should be trump", function() {
@@ -133,7 +94,7 @@ describe("Card deck", function() {
     
     describe("a high joker", function() {
       let card = { suit: "JOKER", cardValue: "HIGHER", points: 12 };
-      trumpSuit = "DIAMOND";
+      let trumpSuit = "DIAMOND";
       let isTrump = cardDeck.isTrump(trumpSuit, card);
       
       it("should be trump", function() {
@@ -143,7 +104,7 @@ describe("Card deck", function() {
     
     describe("a non-trump jack", function() {
       let card = { suit: "SPADE", cardValue: "JACK", points: 14 };
-      trumpSuit = "DIAMOND";
+      let trumpSuit = "DIAMOND";
       let isTrump = cardDeck.isTrump(trumpSuit, card);
       
       it("should be trump", function() {
